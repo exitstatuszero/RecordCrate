@@ -22,11 +22,16 @@ struct RecordCrateApp: App {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
+    
+    @State
+    private var store: UtilityStore = UtilityStore()
 
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
         .modelContainer(sharedModelContainer)
+        .environment(store)
+        
     }
 }

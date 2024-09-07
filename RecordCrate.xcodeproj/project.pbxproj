@@ -48,14 +48,14 @@
 			path = RecordCrate;
 			sourceTree = "<group>";
 		};
-		DA21851A2C8BECC20080C41E /* UnitTests */ = {
+		DA21851A2C8BECC20080C41E /* RecordCrateTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = UnitTests;
+			path = RecordCrateTests;
 			sourceTree = "<group>";
 		};
-		DA2185242C8BECC20080C41E /* UITests */ = {
+		DA2185242C8BECC20080C41E /* RecordCrateUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = UITests;
+			path = RecordCrateUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -89,8 +89,8 @@
 			isa = PBXGroup;
 			children = (
 				DA2185052C8BECC10080C41E /* RecordCrate */,
-				DA21851A2C8BECC20080C41E /* UnitTests */,
-				DA2185242C8BECC20080C41E /* UITests */,
+				DA21851A2C8BECC20080C41E /* RecordCrateTests */,
+				DA2185242C8BECC20080C41E /* RecordCrateUITests */,
 				DA2185042C8BECC10080C41E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -144,7 +144,7 @@
 				DA2185192C8BECC20080C41E /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				DA21851A2C8BECC20080C41E /* UnitTests */,
+				DA21851A2C8BECC20080C41E /* RecordCrateTests */,
 			);
 			name = RecordCrateTests;
 			packageProductDependencies = (
@@ -167,7 +167,7 @@
 				DA2185232C8BECC20080C41E /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				DA2185242C8BECC20080C41E /* UITests */,
+				DA2185242C8BECC20080C41E /* RecordCrateUITests */,
 			);
 			name = RecordCrateUITests;
 			packageProductDependencies = (
@@ -318,7 +318,7 @@
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				XROS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -360,7 +360,7 @@
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				XROS_DEPLOYMENT_TARGET = 2.0;
 			};
