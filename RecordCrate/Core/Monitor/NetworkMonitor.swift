@@ -5,33 +5,53 @@
 //  Created by Andrew Januszko on 9/6/24.
 //
 
-import Foundation
 import Network
+import Foundation
 import os
 
-actor NetworkMonitor {
-    private(set) var networkMonitorHasTriggered: Bool
-    private(set) var pathStatus: NWPath.Status
-    private(set) var unsatisfiedReason: NWPath.UnsatisfiedReason
-    private(set) var isExpensive: Bool
-    private(set) var isConstrained: Bool
-    private let networkMonitor: NWPathMonitor
-    private let logger: Logger
+///
+actor NetworkMonitor: Monitor {
     
-    init() {
+    ///
+    static let shared: NetworkMonitor = NetworkMonitor()
+    
+    ///
+    private(set) var networkMonitorHasTriggered: Bool
+    
+    ///
+    private(set) var pathStatus: NWPath.Status
+    
+    ///
+    private(set) var unsatisfiedReason: NWPath.UnsatisfiedReason
+    
+    ///
+    private(set) var isExpensive: Bool
+    
+    ///
+    private(set) var isConstrained: Bool
+    
+    ///
+    private let networkMonitor: NWPathMonitor
+    
+    ///
+    let logger: Logger
+    
+    ///
+    private init() {
         self.networkMonitorHasTriggered = false
         self.pathStatus = .unsatisfied
         self.unsatisfiedReason = .notAvailable
         self.isExpensive = true
         self.isConstrained = true
-        self.logger = BundleHelper.shared.logger(for: .networkStatusManager)
-        self.logger.debug(":: init()")
+        self.logger = BundleHelper.shared.logger(for: .networkStatusActor)
         self.networkMonitor = NWPathMonitor()
         self.logger.debug(":: init() | NetworkManager initialized.")
     }
     
+    ///
     func start() async {
-        logger.debug(":: startMonitoringNetwork()")
+        self.networkMonitor.cancel()
+        self.networkMonitorHasTriggered = false
         for await path in networkMonitor {
             self.pathStatus = path.status
             self.unsatisfiedReason = path.unsatisfiedReason
@@ -39,14 +59,14 @@ actor NetworkMonitor {
             self.isConstrained = path.isConstrained
             self.networkMonitorHasTriggered = true
         }
-        logger.debug(":: startMonitoringNetwork() | Network monitoring has started.")
+        logger.debug(":: start() | Network monitoring has started.")
     }
     
-    func stop() {
-        logger.debug(":: stopMonitoringNetwork()")
+    ///
+    func stop() async {
         self.networkMonitor.cancel()
         self.networkMonitorHasTriggered = false
-        logger.debug(":: stopMonitoringNetwork() | Network monitoring has stopped.")
+        logger.debug(":: stop() | Network monitoring has stopped.")
     }
 }
 

@@ -10,12 +10,13 @@ import SwiftData
 
 @main
 struct RecordCrateApp: App {
+    
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
+        
         do {
             return try ModelContainer(for: schema, configurations: [modelConfiguration])
         } catch {
@@ -23,15 +24,16 @@ struct RecordCrateApp: App {
         }
     }()
     
-    @State
-    private var store: UtilityStore = UtilityStore()
-
+    ///
+    static let musicKitMonitor: MusicKitMonitor = MusicKitMonitor.shared
+    
+    ///
+    static let networkMonitor: NetworkMonitor = NetworkMonitor.shared
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(sharedModelContainer)
-        .environment(store)
-        
+        .modelContainer(sharedModelContainer)        
     }
 }

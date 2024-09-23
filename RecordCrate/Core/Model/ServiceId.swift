@@ -7,8 +7,15 @@
 
 import Foundation
 
+///
 enum ServiceId: String, CaseIterable, Hashable {
-    case bundleInfoHelper = "BundleInfoHelper"
-    case musicKitAccessManager = "MusicKitAccessActor"
-    case networkStatusManager = "NetworkStatusActor"
+    
+    ///
+    case bundleHelper = "BundleHelper"
+    
+    ///
+    case musicKitAccessActor = "MusicKitAccessActor"
+    
+    ///
+    case networkStatusActor = "NetworkStatusActor"
 }

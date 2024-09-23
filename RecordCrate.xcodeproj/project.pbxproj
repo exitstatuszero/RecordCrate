@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		DA1300B02C9E1A5E00BCBB99 /* Glur in Frameworks */ = {isa = PBXBuildFile; productRef = DA1300AF2C9E1A5E00BCBB99 /* Glur */; };
+		DA1300B32C9E1C9600BCBB99 /* PhosphorSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DA1300B22C9E1C9600BCBB99 /* PhosphorSwift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		DA2185182C8BECC20080C41E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -65,6 +70,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA1300B02C9E1A5E00BCBB99 /* Glur in Frameworks */,
+				DA1300B32C9E1C9600BCBB99 /* PhosphorSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +132,8 @@
 			);
 			name = RecordCrate;
 			packageProductDependencies = (
+				DA1300AF2C9E1A5E00BCBB99 /* Glur */,
+				DA1300B22C9E1C9600BCBB99 /* PhosphorSwift */,
 			);
 			productName = RecordCrate;
 			productReference = DA2185032C8BECC10080C41E /* RecordCrate.app */;
@@ -208,6 +217,10 @@
 			);
 			mainGroup = DA2184FA2C8BECC10080C41E;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				DA1300AE2C9E1A5E00BCBB99 /* XCRemoteSwiftPackageReference "Glur" */,
+				DA1300B12C9E1C9600BCBB99 /* XCRemoteSwiftPackageReference "swift" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = DA2185042C8BECC10080C41E /* Products */;
 			projectDirPath = "";
@@ -321,6 +334,7 @@
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				XROS_DEPLOYMENT_TARGET = 2.0;
+				_EXPERIMENTAL_SWIFT_EXPLICIT_MODULES = YES;
 			};
 			name = Debug;
 		};
@@ -363,6 +377,7 @@
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				XROS_DEPLOYMENT_TARGET = 2.0;
+				_EXPERIMENTAL_SWIFT_EXPLICIT_MODULES = YES;
 			};
 			name = Release;
 		};
@@ -610,6 +625,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DA1300AE2C9E1A5E00BCBB99 /* XCRemoteSwiftPackageReference "Glur" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/joogps/Glur";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.4;
+			};
+		};
+		DA1300B12C9E1C9600BCBB99 /* XCRemoteSwiftPackageReference "swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/phosphor-icons/swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DA1300AF2C9E1A5E00BCBB99 /* Glur */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DA1300AE2C9E1A5E00BCBB99 /* XCRemoteSwiftPackageReference "Glur" */;
+			productName = Glur;
+		};
+		DA1300B22C9E1C9600BCBB99 /* PhosphorSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DA1300B12C9E1C9600BCBB99 /* XCRemoteSwiftPackageReference "swift" */;
+			productName = PhosphorSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DA2184FB2C8BECC10080C41E /* Project object */;
 }

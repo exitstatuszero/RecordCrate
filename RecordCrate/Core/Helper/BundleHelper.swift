@@ -8,38 +8,50 @@
 import Foundation
 import os
 
-/// Class used to fetch bundle information for RecordCrate.
+enum BundleError: Error {
+    case invalidBundle
+}
+
 final class BundleHelper: Sendable {
-    static let shared: BundleHelper = BundleHelper()
-    let bundleIdentifier: String
-    let internalName: String
-    let versionNumber: String
-    let buildNumber: String
     
-    private init() {
+    static let shared: BundleHelper = BundleHelper()
+    
+    var bundleIdentifier: Result<String, BundleError> {
         guard let bundleIdentifier = Bundle.main.bundleIdentifier else {
-            fatalError("Failed to retrieve bundle identifier from Info.plist for RecordCrate.")
+            return .failure(.invalidBundle)
         }
-        self.bundleIdentifier = bundleIdentifier
-        
-        guard let internalName: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String else {
-            fatalError("Failed to retrieve internal name from Info.plist for RecordCrate.")
+        return .success(bundleIdentifier)
+    }
+    
+    var internalName: Result<String, BundleError> {
+        guard let internalName: String = Bundle.main.object(
+            forInfoDictionaryKey: "CFBundleName"
+        ) as? String else {
+            return .failure(.invalidBundle)
         }
-        self.internalName = internalName
-        
-        guard let buildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String else {
-            fatalError("Failed to retrieve build number from Info.plist for RecordCrate.")
+        return .success(internalName)
+    }
+    
+    var buildNumber: Result<String, BundleError> {
+        guard let buildNumber = Bundle.main.object(
+            forInfoDictionaryKey: "CFBundleVersion"
+        ) as? String else {
+            return .failure(.invalidBundle)
         }
-        self.buildNumber = buildNumber
-        
-        guard let versionNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String else {
-            fatalError("Failed to retrieve version number from Info.plist for RecordCrate.")
+        return .success(buildNumber)
+    }
+    
+    var versionNumber: Result<String, BundleError> {
+        guard let versionNumber = Bundle.main.object(
+            forInfoDictionaryKey: "CFBundleShortVersionString"
+        ) as? String else {
+            return .failure(.invalidBundle)
         }
-        self.versionNumber = versionNumber
+        return .success(versionNumber)
     }
     
     func logger(for service: ServiceId) -> Logger {
-        Logger(subsystem: self.bundleIdentifier, category: service.rawValue)
+        Logger(subsystem: "", category: service.rawValue)
     }
     
 }
